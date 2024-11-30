@@ -35,6 +35,7 @@ export default App;
 
 const Wrapper = styled.div`
   //overflow: hidden;
+  padding-top: 100px;
   width: 100vw;
   height: 100vh;
   display: flex;
