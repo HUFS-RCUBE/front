@@ -1,18 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ProjectCard = ({ year, image, name, description, tags }) => {
+const ProjectCard = ({ year, image, name, description, tags ,onClick }) => {
   return (
-    <CardContainer>
+    <CardContainer onClick={onClick}>
       <ImageContainer>
         <img src={image} alt={`${name} 프로젝트`} />
       </ImageContainer>
-      <YearBadge>{year}</YearBadge>
+      <YearBadge>{`${year}기`}</YearBadge>
       <ProjectName>{name}</ProjectName>
       <ProjectDescription>{description}</ProjectDescription>
       <TagContainer>
         {tags.map((tag, index) => (
-          <Tag key={index}>{tag}</Tag>
+          <Tag key={index} tag={tag}>{tag}</Tag>
         ))}
       </TagContainer>
     </CardContainer>
@@ -49,8 +49,8 @@ const ImageContainer = styled.div`
 `;
 
 const YearBadge = styled.div`
-  background-color: #d9f0e3;
-  color: #333333;
+  background-color: ${({ theme }) => theme.colors.mainColor};
+  color: #FFFFFF;
   font-weight: bold;
   border-radius: 12px;
   padding: 4px 12px;
@@ -77,8 +77,12 @@ const TagContainer = styled.div`
 `;
 
 const Tag = styled.span`
-  background-color: #ffcccc;
-  color: #ffffff;
+  background-color: ${({ tag }) => 
+    tag.toLowerCase() === 'react' ? 'rgba(229, 138, 123, 0.3)' :
+    tag.toLowerCase() === 'spring' ? 'rgba(39, 152, 255, 0.3)' : '#f1f1f1'};
+  color: ${({ tag }) => 
+    tag.toLowerCase() === 'react' ? '#E58A7B' :
+    tag.toLowerCase() === 'spring' ? '#2798FF' : '#333'};
   font-size: 14px;
   font-weight: bold;
   border-radius: 12px;
