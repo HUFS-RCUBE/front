@@ -40,7 +40,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f5f5f5;
+  padding-top: 100px;
 `;
 
 const Container = styled.div`
