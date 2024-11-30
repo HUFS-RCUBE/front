@@ -6,8 +6,14 @@ function Main() {
   return (
     <>
       <Wrapper>
-        <Header />
         <RecruitmentBadge>모집중</RecruitmentBadge>
+        <ContentContainer>
+          <FirstComment>Research, Reinvent, Reach Beyond</FirstComment>
+          <SecondComment>
+            "R-CUBE는 연구로 세상을 변화시키고, 혁신으로 미래를 설계하는 인재를
+            양성합니다."
+          </SecondComment>
+        </ContentContainer>
         <ImageWrapper>
           <MainImage src={worldImage} alt="World Image" />
         </ImageWrapper>
@@ -19,36 +25,65 @@ function Main() {
 export default Main;
 
 const Wrapper = styled.div`
-  weight: 100vh;
-  height: 8vh;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+
+const RecruitmentBadge = styled.div`
+  position: absolute;
+  top: 200px; /* 화면 상단에서의 거리 */
+  left: 520px; /* 수평 중앙 정렬 */
+  transform: translateX(-50%);
+  width: 100px;
+  height: 34px;
+  background-color: #28887a;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100; /* 다른 요소 위에 표시되도록 높은 z-index 설정 */
+`;
+
+const ContentContainer = styled.div`
+  text-align: center;
+  margin-top: 60px; /* 배지와 간격 조정 */
+`;
+
+const FirstComment = styled.div`
+  font-family: "Ink Free", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 56.5px;
+  color: black;
+  margin-bottom: 10px; /* 아래 텍스트와 간격 */
+`;
+
+const SecondComment = styled.div`
+  font-family: "Ink Free", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+  line-height: 28px;
 `;
 
 const ImageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
+  margin-top: 30px; /* 텍스트와 이미지 간격 조정 */
 `;
 
 const MainImage = styled.img`
-  max-width: 100%;
+  width: 70%; /* 반응형 너비 */
+  max-width: 780px;
   height: auto;
-  margin-top: 300px;
-`;
-
-const RecruitmentBadge = styled.div`
-  width: 117px;
-  height: 37px;
-  position: absolute;
-  top: 187px; /* 배지의 세로 위치 */
-  left: 285px; /* 배지의 가로 위치 */
-  background-color: #2e7d6b; /* 초록색 배경 */
-  color: white; /* 텍스트 색상 */
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 50px; /* 둥근 모서리 */
-  display: flex;
-  align-items: center; /* 텍스트 세로 중앙 정렬 */
-  justify-content: center; /* 텍스트 가로 중앙 정렬 */
-  pointer-events: none; /* 클릭 불가능하게 설정 */
+  border-radius: 10px; /* 둥근 모서리 효과 */
 `;
