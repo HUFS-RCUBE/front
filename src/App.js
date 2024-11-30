@@ -3,15 +3,26 @@ import Main from "./pages/mainpage/Main";
 import styled, { ThemeProvider } from "styled-components";
 import { BrowserRouter as Router } from "react-router-dom";
 import theme from "./styles/theme";
+import SocietyManagement from "./pages/societyManagement/SocietyManagement";
+import ProjectPage from "./pages/projectPage/ProjectPage";
+import QandAPage from "./pages/qandapage/QandAPage";
+import Header from "./component/router/Header";
 
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
+        <Header />
         <Wrapper>
           <Container>
             <Routes>
               <Route path="/" element={<Main />} />
+              <Route
+                path="/societymanagement"
+                element={<SocietyManagement />}
+              />
+              <Route path="/project" element={<ProjectPage />} />
+              <Route path="/faq" element={<QandAPage />} />
             </Routes>
           </Container>
         </Wrapper>
