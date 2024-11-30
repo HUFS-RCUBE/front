@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { IoIosArrowDown } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
+import { format } from "date-fns";
 
 function QandAPage() {
-  const questions = [
+  const [questions, setQuestions] = React.useState([
     {
       question: "컴퓨터공학부 학회가 아닌데 R-CUBE에 지원할 수 있나요?11111",
-      answer: "아아니요",
+      answer: "아니요",
       date: "2024.00.00",
     },
     {
@@ -14,10 +16,13 @@ function QandAPage() {
       answer: "아니요",
       date: "2024.00.00",
     },
-  ];
+  ]);
 
   const [expandedIndex, setExpandedIndex] = React.useState(null);
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+
+  const [newQuestion, setNewQuestion] = React.useState("");
+  const [newAnswer, setNewAnswer] = React.useState("");
 
   const toggleAnswer = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -29,6 +34,24 @@ function QandAPage() {
 
   const closePopup = () => {
     setIsPopupOpen(false);
+    setNewQuestion("");
+    setNewAnswer("");
+    alert("질문이 등록되었습니다.");
+  };
+
+  const handleRegisterQuestion = () => {
+    if (!newQuestion || !newAnswer) {
+      alert("질문과 답변을 모두 입력해주세요.");
+      return;
+    }
+    const newEntry = {
+      question: newQuestion,
+      answer: newAnswer,
+      date: format(new window.Date(), "yyyy.MM.dd"),
+    };
+    console.log(Date);
+    // setQuestions((prevQuestions) => [...prevQuestions, newEntry]);
+    closePopup();
   };
 
   return (
@@ -65,16 +88,31 @@ function QandAPage() {
       {isPopupOpen && (
         <PopupOverlay>
           <PopupContent>
-            <CloseButton onClick={closePopup}>X</CloseButton>
+            <CloseButton onClick={closePopup}>
+              <IoClose />
+            </CloseButton>
             <InputContainer>
-              <label>제목</label>
-              <InputField type="text" placeholder="제목을 입력하세요" />
+              <label>질문</label>
+              <InputField
+                type="text"
+                placeholder="질문을 입력하세요"
+                value={newQuestion}
+                onChange={(e) => setNewQuestion(e.target.value)}
+              />
             </InputContainer>
             <InputContainer>
-              <label>내용</label>
-              <TextareaField placeholder="내용을 입력하세요"></TextareaField>
+              <label>답변</label>
+              <TextareaField
+                placeholder="답변을 입력하세요"
+                value={newAnswer}
+                onChange={(e) => setNewAnswer(e.target.value)}
+              ></TextareaField>
             </InputContainer>
-            <PopupRegisterButton>질문 등록하기</PopupRegisterButton>
+            <BottomSheet>
+              <PopupRegisterButton onClick={handleRegisterQuestion}>
+                질문 등록하기
+              </PopupRegisterButton>
+            </BottomSheet>
           </PopupContent>
         </PopupOverlay>
       )}
@@ -238,13 +276,19 @@ const TextareaField = styled.textarea`
   height: 100px;
 `;
 
+const BottomSheet = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+`;
+
 const PopupRegisterButton = styled.button`
   background: ${({ theme }) => theme.colors.mainColor};
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
 
   &:hover {
