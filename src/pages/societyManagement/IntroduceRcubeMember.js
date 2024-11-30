@@ -5,8 +5,8 @@ function IntroduceRcubeMember() {
     { name: "설희관", role: "학회장", github: "github.com" },
     { name: "이예림", role: "학회원", github: "github.com/yerimi00" },
     { name: "이승주", role: "학회원", github: "github.com" },
-    { name: "김재현", role: "학회원", github: "github.com/rlawogjs" },
-    { name: "???", role: "학회원", github: "github.com" },
+    { name: "김재헌", role: "학회원", github: "github.com/rlawogjs" },
+    { name: "노기연", role: "학회원", github: "github.com/kyeon2" },
   ];
 
   return (

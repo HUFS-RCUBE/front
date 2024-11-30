@@ -42,7 +42,7 @@ const categories = [
     description: "실력에 맞게 기초부터 탄탄하게 알아가요",
     progress: [
       { name: "예림", percentage: "70%" },
-      { name: "재현", percentage: "80%" },
+      { name: "재헌", percentage: "80%" },
     ],
   },
   {
@@ -51,7 +51,7 @@ const categories = [
     description: "실력에 맞게 기초부터 탄탄하게 알아가요",
     progress: [
       { name: "예림", percentage: "60%" },
-      { name: "재현", percentage: "75%" },
+      { name: "재헌", percentage: "75%" },
     ],
   },
   {
@@ -60,7 +60,7 @@ const categories = [
     description: "실력에 맞게 기초부터 탄탄하게 알아가요",
     progress: [
       { name: "예림", percentage: "85%" },
-      { name: "재현", percentage: "90%" },
+      { name: "재헌", percentage: "90%" },
     ],
   },
   {
@@ -69,7 +69,7 @@ const categories = [
     description: "실력에 맞게 기초부터 탄탄하게 알아가요",
     progress: [
       { name: "예림", percentage: "50%" },
-      { name: "재현", percentage: "65%" },
+      { name: "재헌", percentage: "65%" },
     ],
   },
 ];
